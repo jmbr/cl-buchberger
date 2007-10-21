@@ -16,7 +16,7 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (defclass ring-element ()
-  (base-ring)				; XXX use initform, ...
+  (base-ring)
   (:documentation "Base class for ring elements."))
 
 (defgeneric ring-copy (element)
