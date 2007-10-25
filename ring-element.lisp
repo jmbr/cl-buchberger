@@ -32,9 +32,6 @@
   (:documentation "Returns t if element is the multiplicative
   identity, nil otherwise"))
 
-(defgeneric parse (element sexp &key)
-  (:documentation "Read a ring element from an s-expression"))
-
 (defgeneric ring+ (element &rest more-elements))
 (defgeneric ring- (element &rest more-elements))
 (defgeneric ring* (element &rest more-elements))
