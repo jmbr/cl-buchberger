@@ -26,7 +26,8 @@
 
 (defmethod ring/ ((poly polynomial) &rest more-polynomials)
   (if (some #'ring-zero-p more-polynomials)
-      (error 'ring-division-by-zero))
+      (error 'ring-division-by-zero
+             :operands (list poly more-polynomials)))
   (divmod poly
           (make-array (length more-polynomials)
                       :initial-contents more-polynomials)))

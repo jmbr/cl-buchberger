@@ -20,7 +20,9 @@
   (:documentation "Base class for ring elements."))
 
 (define-condition ring-division-by-zero (error)
-  ())
+  ((operands
+    :initarg :operands
+    :reader operands)))
 
 (defgeneric ring-copy (element)
   (:documentation "Returns a deep copy of an element"))
