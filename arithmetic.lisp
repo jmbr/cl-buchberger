@@ -25,6 +25,8 @@
   (reduce #'mul more-polynomials :initial-value poly))
 
 (defmethod ring/ ((poly polynomial) &rest more-polynomials)
+  (if (some #'ring-zero-p more-polynomials)
+      (error 'ring-division-by-zero))
   (divmod poly
           (make-array (length more-polynomials)
                       :initial-contents more-polynomials)))
