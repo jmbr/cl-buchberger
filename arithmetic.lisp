@@ -58,7 +58,7 @@
                              :monomial monomial))))
 
 (defmethod sub ((p1 polynomial) (p2 polynomial))
-  "Returns the result of substracting two polynomials."
+  "Returns the result of subtracting two polynomials."
   (add p1
        (mul p2
             (make-instance 'term
@@ -107,8 +107,7 @@
 
 (defmethod dividesp ((t1 term) (p polynomial))
   (assert (and t1 p))
-  (every #'identity
-         (mapterm #'(lambda (x) (dividesp t1 x)) p)))
+  (every #'(lambda (x) (dividesp t1 x)) (terms->list p)))
 
 (defmethod div ((t1 term) (t2 term))
   "Returns the quotient of two terms"
