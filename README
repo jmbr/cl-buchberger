@@ -1,5 +1,9 @@
-CL-Buchberger
+cl-buchberger
 =============
+Juan M. Bello <jmbr@superadditive.com>
+v0.0.2, October 2007
+
+image::images/cl-buchberger.png[Screenshot]
 
 Overview
 --------
@@ -19,40 +23,49 @@ http://superadditive.com/software/cl-buchberger-latest.tar.gz
 Portability
 -----------
 
-The code has been tested under SBCL 0.10.0 and CLISP 2.4.1.
+The code has been tested under SBCL 1.0.11 and CLISP 2.4.2.
 
 Usage
 -----
 
-1. Loading the package.
+Loading the package
+~~~~~~~~~~~~~~~~~~~
 
 You need ASDF installed in your system.  To load CL-Buchberger,
 write::
 
+------------------------------------------------------
   CL-USER> (asdf:operate 'asdf:load-op :cl-buchberger)
   NIL
   CL-USER> (use-package :cl-buchberger)
   T
+------------------------------------------------------
 
-2. Defining a polynomial ring.
+Defining a polynomial ring
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There's a default ring which is the ring of polynomials on X, Y, Z
 over the rationals.  To define custom polynomial rings use::
 
+---------------------------------------------------------
   CL-USER> (make-instance 'polynomial-ring :variables
                           (list 'x 'y 'z 'u 'w 'r 's 't))
   #<POLYNOMIAL-RING X, Y, Z, U, W, R, S, T over RATIONAL>
+---------------------------------------------------------
 
 To change the default ring just bind \*RING\* to whatever you want::
 
+---------------------------------------------------------------------
   CL-USER> (defparameter *ring*
              (make-instance 'polynomial-ring :variables (list 'x 'y))
              "QQ[X, Y]")
   *RING*
   CL-USER> *ring*
   #<POLYNOMIAL-RING X, Y over RATIONAL>
+---------------------------------------------------------------------
 
-3. Defining polynomials.
+Defining polynomials
+~~~~~~~~~~~~~~~~~~~~
 
 Polynomials are defined using a list of terms where each term is a
 list with the coefficient as its first term and where the remaining
@@ -61,6 +74,7 @@ correspond to the term xy^2z^3
 
 Thus, to create a polynomial write::
 
+-------------------------------------------------------------------
   CL-USER> (defparameter *l* (make-polynomial '((1 3 0) (-2 1 1))))
   *L*
   CL-USER> *l*
@@ -69,8 +83,10 @@ Thus, to create a polynomial write::
   *M*
   CL-USER> *m*
   #<POLYNOMIAL 3x^4y + x^2>
+-------------------------------------------------------------------
 
-4. Polynomial arithmetic.
+Polynomial arithmetic
+~~~~~~~~~~~~~~~~~~~~~
 
 Use the generic functions RING+, RING-, RING*, and RING/ for the usual
 arithmetic operations.
@@ -82,28 +98,34 @@ sequence of quotients and a remainder.
 To set the default monomial ordering, bind \*MONOMIAL-ORDERING\* to the
 relevant function (which defaults to LEX>).  For example::
 
+--------------------------------------------------------
   CL-USER> (defparameter *monomial-ordering* #'grevlex>)
   *MONOMIAL-ORDERING*
+--------------------------------------------------------
 
 Also, you can use the macro WITH-MONOMIAL-ORDERING to define the
 current monomial ordering as in::
 
+-------------------------------------------
   CL-USER> (with-monomial-ordering #'grlex>
              (ring/ *m* *l*))
   #(#<POLYNOMIAL 3xy>)
   #<POLYNOMIAL 6x^2y^2 + x^2>
+-------------------------------------------
 
-5. Computing Gröbner bases.
+Computing Gröbner bases
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The functions GROEBNER and REDUCED-GROEBNER compute Gröbner basis and
 reduced Gröbner basis respectively.  Both of them take a sequence of
 polynomials as parameter.
 
 This is currently implemented using Buchberger's algorithm with
-criterion as described in [1]_
+criterion as described in <<iva>>.
 
-For example::
+For example:
 
+--------------------------------------------------------------------------------
   CL-USER> (defparameter *katsura-3*
              (list (make-polynomial '((1 1 0 0) (2 0 1 0) (2 0 0 1) (-1 0 0 0)))
                    (make-polynomial '((1 2 0 0) (-1 1 0 0) (2 0 2 0) (2 0 0 2)))
@@ -117,6 +139,7 @@ For example::
   #(#<POLYNOMIAL x - 60z^3 + 158/7z^2 + 8/7z - 1>
     #<POLYNOMIAL y + 30z^3 - 79/7z^2 + 3/7z>
     #<POLYNOMIAL z^4 - 10/21z^3 + 1/84z^2 + 1/84z>)
+--------------------------------------------------------------------------------
 
 Feedback
 --------
@@ -126,5 +149,5 @@ Send suggestions, bugfixes, and patches to jmbr@superadditive.com
 References
 ----------
 
-.. [1] Cox, D.; Little, J.; and O'Shea, D. Ideals, Varieties, and Algorithms: An Introduction to Algebraic Geometry and Commutative Algebra, 3rd ed. New York: Springer-Verlag, 2007
++ [[iva]] Cox, D.; Little, J.; and O'Shea, D. Ideals, Varieties, and Algorithms: An Introduction to Algebraic Geometry and Commutative Algebra, 3rd ed. New York: Springer-Verlag, 2007
 
