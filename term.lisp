@@ -69,4 +69,4 @@
   (with-slots ((c1 coefficient) (m1 monomial)) t1
     (with-slots ((c2 coefficient) (m2 monomial)) t2
       (and (= c1 c2)
-	   (equalp m1 m2)))))
+	   (vector= m1 m2)))))
