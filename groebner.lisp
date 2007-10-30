@@ -16,8 +16,9 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (defun s-poly (f g)
-   "Returns S(f, g) = x^gamma/LT(f) * f - x^gamma/LT(g) * g where
-x^gamma is LCM(LM(f), LM(g))"
+   "Returns the S-polynomial of f and g"
+   ;; S(f, g) = x^gamma/LT(f) * f - x^gamma/LT(g) * g where x^gamma is
+   ;; LCM(LM(f), LM(g))
    (flet ((make-x-gamma (f g)
             (make-instance 'term
                            :coefficient 1
