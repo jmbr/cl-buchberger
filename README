@@ -8,7 +8,7 @@ image::images/cl-buchberger.png[Screenshot]
 Overview
 --------
 
-CL-Buchberger is a Common Lisp implementation of Buchberger's
+cl-buchberger is a Common Lisp implementation of Buchberger's
 algorithm for the computation of Gröbner bases.
 
 Currently this package can compute Gröbner bases of ideals in
@@ -18,7 +18,7 @@ Availability
 ------------
 
 Download the latest version of this package from
-http://superadditive.com/software/cl-buchberger-latest.tar.gz
+http://superadditive.com/software/cl-buchberger-latest.tar.gz[]
 
 Portability
 -----------
@@ -31,8 +31,8 @@ Usage
 Loading the package
 ~~~~~~~~~~~~~~~~~~~
 
-You need ASDF installed in your system.  To load CL-Buchberger,
-write::
+You need ASDF installed in your system.  To load cl-buchberger,
+write:
 
 ------------------------------------------------------
   CL-USER> (asdf:operate 'asdf:load-op :cl-buchberger)
@@ -45,7 +45,7 @@ Defining a polynomial ring
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There's a default ring which is the ring of polynomials on X, Y, Z
-over the rationals.  To define custom polynomial rings use::
+over the rationals.  To define custom polynomial rings use:
 
 ---------------------------------------------------------
   CL-USER> (make-instance 'polynomial-ring :variables
@@ -53,7 +53,7 @@ over the rationals.  To define custom polynomial rings use::
   #<POLYNOMIAL-RING X, Y, Z, U, W, R, S, T over RATIONAL>
 ---------------------------------------------------------
 
-To change the default ring just bind \*RING\* to whatever you want::
+To change the default ring just bind \*RING\* to whatever you want:
 
 ---------------------------------------------------------------------
   CL-USER> (defparameter *ring*
@@ -70,9 +70,9 @@ Defining polynomials
 Polynomials are defined using a list of terms where each term is a
 list with the coefficient as its first term and where the remaining
 elements are variable exponents.  For example: (1 1 2 3) would
-correspond to the term xy^2z^3
+correspond to the term $$`xy^2z^3`$$
 
-Thus, to create a polynomial write::
+Thus, to create a polynomial write:
 
 -------------------------------------------------------------------
   CL-USER> (defparameter *l* (make-polynomial '((1 3 0) (-2 1 1))))
@@ -96,7 +96,7 @@ and takes a polynomial and a sequence of divisors to produce a
 sequence of quotients and a remainder.
 
 To set the default monomial ordering, bind \*MONOMIAL-ORDERING\* to the
-relevant function (which defaults to LEX>).  For example::
+relevant function (which defaults to LEX>).  For example:
 
 --------------------------------------------------------
   CL-USER> (defparameter *monomial-ordering* #'grevlex>)
@@ -104,7 +104,7 @@ relevant function (which defaults to LEX>).  For example::
 --------------------------------------------------------
 
 Also, you can use the macro WITH-MONOMIAL-ORDERING to define the
-current monomial ordering as in::
+current monomial ordering as in:
 
 -------------------------------------------
   CL-USER> (with-monomial-ordering #'grlex>
@@ -121,7 +121,7 @@ reduced Gröbner basis respectively.  Both of them take a sequence of
 polynomials as parameter.
 
 This is currently implemented using Buchberger's algorithm with
-criterion as described in <<iva>>.
+criterion as described in <<COX>>.
 
 For example:
 
@@ -149,5 +149,4 @@ Send suggestions, bugfixes, and patches to jmbr@superadditive.com
 References
 ----------
 
-+ [[iva]] Cox, D.; Little, J.; and O'Shea, D. Ideals, Varieties, and Algorithms: An Introduction to Algebraic Geometry and Commutative Algebra, 3rd ed. New York: Springer-Verlag, 2007
-
++ [[COX]] Cox, D.; Little, J.; and O'Shea, D. Ideals, Varieties, and Algorithms: An Introduction to Algebraic Geometry and Commutative Algebra, 3rd ed. New York: Springer-Verlag, 2007
