@@ -152,6 +152,9 @@ quotients (as an array) and a remainder."
        finally (return (values as r)))))
 
 (defmethod ring-mod (f &rest fs)
+  (if (some #'ring-zero-p fs)
+      (error 'ring-division-by-zero
+             :operands (list f fs)))
   (nth-value 1 (apply #'divmod f fs)))
 
 (defmethod ring-lcm ((t1 term) (t2 term))
