@@ -18,12 +18,17 @@ Availability
 ------------
 
 Download the latest version of this package from
-http://superadditive.com/software/cl-buchberger-latest.tar.gz[]
+http://common-lisp.net/project/cl-buchberger/cl-buchberger_latest.tar.gz[]
 
 Portability
 -----------
 
 The code has been tested under SBCL 1.0.11 and CLISP 2.4.2.
+
+License
+-------
+
+cl-buchberger is released under the GNU GPLv2.
 
 Usage
 -----
@@ -141,10 +146,11 @@ For example:
     #<POLYNOMIAL z^4 - 10/21z^3 + 1/84z^2 + 1/84z>)
 --------------------------------------------------------------------------------
 
-Feedback
---------
+Mailing lists
+-------------
 
-Send suggestions, bugfixes, and patches to jmbr@superadditive.com
+* http://www.common-lisp.net/mailman/listinfo/cl-buchberger-devel[cl-buchberger-devel]
+* http://www.common-lisp.net/mailman/listinfo/cl-buchberger-announce[cl-buchberger-announce]
 
 References
 ----------
