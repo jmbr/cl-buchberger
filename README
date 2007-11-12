@@ -121,8 +121,8 @@ current monomial ordering as in:
 Computing Gröbner bases
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The functions GROEBNER and REDUCED-GROEBNER compute Gröbner basis and
-reduced Gröbner basis respectively.  Both of them take a sequence of
+The functions GROEBNER and REDUCED-GROEBNER compute Gröbner bases and
+reduced Gröbner bases respectively.  Both of them take a sequence of
 polynomials as parameter.
 
 This is currently implemented using Buchberger's algorithm with
