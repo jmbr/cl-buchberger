@@ -16,22 +16,23 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 (defun vector+ (v1 v2)
-  "Returns the sum of two vectors."
+  "Returns the sum of the two vectors V1 and V2."
   (map 'vector #'+ v1 v2))
 
 (defun vector- (v1 v2)
-  "Returns the difference of two vectors."
+  "Returns the difference of the two vectors V1 and V2."
   (map 'vector #'- v1 v2))
 
 (defun vector-zero-p (v)
-  "Returns t if every compoment in v is zero."
+  "Returns T if every compoment in V is zero."
   (every #'zerop v))
 
 (defun vector= (v1 v2)
-  "Returns t if both vectors are equal, nil otherwise."
+  "Returns T if both vectors V1 and V2 have the same components, NIL
+otherwise."
   (equalp v1 v2))
 
 (defun vector> (v1 v2)
-  "Returns t if every component in v1 is greater than the
-corresponding component in v2, nil otherwise."
+  "Returns T if every component in V1 is greater than the
+corresponding component in V2, NIL otherwise."
   (notany #'zerop (vector- v1 v2)))
