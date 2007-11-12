@@ -20,8 +20,8 @@
 (in-package :com.superadditive.cl-buchberger-system)
 
 (defsystem "cl-buchberger"
-  :description "CL-Buchberger: A Common Lisp implementation of Buchberger's algorithm."
-  :version "0.0.1"
+  :description "cl-buchberger: A Common Lisp implementation of Buchberger's algorithm."
+  :version "0.0.2"
   :author "Juan M. Bello Rivas <jmbr@superadditive.com>"
   :license "GNU GPLv2"
   :components ((:file "package")
