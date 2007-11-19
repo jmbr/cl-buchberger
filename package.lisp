@@ -16,7 +16,7 @@
 
 (cl:in-package :cl-user)
 
-(defpackage :com.superadditive.cl-buchberger
+(cl:defpackage :com.superadditive.cl-buchberger
   (:nicknames :cl-buchberger)
   (:use :common-lisp :asdf)
   (:export #:polynomial-ring
