@@ -22,7 +22,7 @@
 (defun lex> (m1 m2)
   "Lexicographic Order"
   (let ((v (vector- m1 m2)))
-    (when (not (vector-zero-p v))
+    (unless (vector-zero-p v)
       (>= (find-if-not #'zerop v) 0))))
 
 (defun grlex> (m1 m2)
@@ -40,7 +40,7 @@
 	(v (vector- m1 m2)))
     (or (> d1 d2)
 	(and (= d1 d2)
-	     (when (not (vector-zero-p v))
+	     (unless (vector-zero-p v)
 	       (minusp (find-if-not #'zerop v :from-end t)))))))
 
 (defvar *monomial-ordering* #'lex>

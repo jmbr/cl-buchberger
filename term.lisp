@@ -28,7 +28,7 @@
 
 (defmethod initialize-instance :after ((tm term) &key ring)
   (when (null (monomial tm))
-    (setf (monomial tm)
+    (setf (monomial tm)                 ; zero-polynomial
 	  (make-array (length (variables ring))
 		      :element-type 'integer :initial-element 0))))
 
@@ -49,7 +49,7 @@
 	       (print-variables ()
 		 (dotimes (i (length monomial))
 		   (let ((exponent (aref monomial i)))
-		     (when (not (zerop exponent))
+		     (unless (zerop exponent)
 		       (format s "~a"
 			       (string-downcase
 				(elt (variables ring) i)))
