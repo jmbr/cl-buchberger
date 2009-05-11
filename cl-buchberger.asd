@@ -21,7 +21,7 @@
 
 (defsystem "cl-buchberger"
   :description "cl-buchberger: A Common Lisp implementation of Buchberger's algorithm."
-  :version "0.0.3"
+  :version "0.0.4"
   :author "Juan M. Bello Rivas <jmbr@superadditive.com>"
   :license "GNU GPLv2"
   :serial t
