@@ -63,7 +63,8 @@
        (mul p2
             (make-instance 'term
                            :ring (base-ring p2)
-                           :coefficient -1))))
+                           :coefficient -1
+                           :monomial (make-array (length (variables (base-ring *g*))) :initial-element 0)))))
 
 (defmethod mul ((poly polynomial) (num number))
   (let ((new-poly (make-instance 'polynomial :ring (base-ring poly))))
