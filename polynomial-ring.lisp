@@ -36,8 +36,7 @@
 (defmethod print-object ((ring polynomial-ring) stream)
   (print-unreadable-object (ring stream :type t)
    (let ((symbols (mapcar #'symbol-name (variables ring))))
-    (format stream "~{~a~^, ~} over ~a"
-	     symbols (base-field ring)))))
+    (format stream ":VARIABLES ~a :BASE-FIELD ~a" symbols (base-field ring)))))
 
 (defvar *ring*
   (make-instance 'polynomial-ring :variables (list 'x 'y 'z))
