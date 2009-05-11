@@ -24,15 +24,15 @@
   :version "0.0.3"
   :author "Juan M. Bello Rivas <jmbr@superadditive.com>"
   :license "GNU GPLv2"
+  :serial t
   :components ((:file "package")
-               (:file "vector" :depends-on ("package"))
-               (:file "ring" :depends-on ("package"))
-	       (:file "ring-element" :depends-on ("package" "ring"))
-	       (:file "term" :depends-on ("package" "ring-element"))
-               (:file "monomial-orderings" :depends-on ("package" "vector"))
-	       (:file "polynomial-ring"
-                      :depends-on ("package" "ring" "ring-element"))
-	       (:file "polynomial"
-                      :depends-on ("package" "term" "monomial-orderings" "polynomial-ring"))
-	       (:file "arithmetic" :depends-on ("package" "polynomial"))
-	       (:file "groebner" :depends-on ("package" "monomial-orderings" "arithmetic"))))
+               (:file "vector")
+               (:file "ring")
+	       (:file "ring-element")
+	       (:file "term")
+               (:file "monomial-orderings")
+	       (:file "polynomial-ring")
+	       (:file "polynomial")
+	       (:file "arithmetic")
+	       (:file "groebner")
+               (:file "ideal")))
