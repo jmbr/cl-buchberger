@@ -1,7 +1,7 @@
 cl-buchberger
 =============
 Juan M. Bello <jmbr@superadditive.com>
-v0.0.3, November 2007
+v0.0.4, May 2009
 
 image::images/cl-buchberger.png[Screenshot]
 
@@ -23,7 +23,7 @@ http://common-lisp.net/project/cl-buchberger/cl-buchberger_latest.tar.gz[]
 Portability
 -----------
 
-The code has been tested under SBCL 1.0.11 and CLISP 2.4.2.
+The code has been tested under CLISP 2.47 and Embeddable Common-Lisp 9.4.0.
 
 License
 -------
@@ -123,36 +123,31 @@ Computing Gröbner bases
 
 The functions GROEBNER and REDUCED-GROEBNER compute Gröbner bases and
 reduced Gröbner bases respectively.  Both of them take a sequence of
-polynomials as parameter.
-
-This is currently implemented using Buchberger's algorithm with
-criterion as described in <<COX>>.
+polynomials as parameter.  An alternative is to construct a polynomial
+ideal and obtain its reduced Gröbner basis using the BASIS generic
+function.
 
 For example:
 
 --------------------------------------------------------------------------------
   CL-USER> (defparameter *katsura-3*
-             (list (make-polynomial '((1 1 0 0) (2 0 1 0) (2 0 0 1) (-1 0 0 0)))
-                   (make-polynomial '((1 2 0 0) (-1 1 0 0) (2 0 2 0) (2 0 0 2)))
-                   (make-polynomial '((2 1 1 0) (2 0 1 1) (-1 0 1 0))))
+             (make-ideal (list (make-polynomial '((1 1 0 0) (2 0 1 0) (2 0 0 1) (-1 0 0 0)))
+                               (make-polynomial '((1 2 0 0) (-1 1 0 0) (2 0 2 0) (2 0 0 2)))
+                               (make-polynomial '((2 1 1 0) (2 0 1 1) (-1 0 1 0)))))
              "Katsura-3 over QQ[x, y, z] (default ring)")
   *KATSURA-3*
   CL-USER> *katsura-3*
-  (#<POLYNOMIAL x + 2y + 2z - 1> #<POLYNOMIAL x^2 - x + 2y^2 + 2z^2>
-   #<POLYNOMIAL 2xy + 2yz - y>)
-  CL-USER> (reduced-groebner *katsura-3*)
+  #<IDEAL :RING #<POLYNOMIAL-RING :VARIABLES (X Y Z)
+          :BASE-FIELD RATIONAL> :GENERATORS #(#<POLYNOMIAL x + 2y + 2z - 1>
+                                            #<POLYNOMIAL x^2 - x + 2y^2 + 2z^2>
+                                            #<POLYNOMIAL 2xy + 2yz - y>)>
+  CL-USER> (basis *katsura-3*)
   #(#<POLYNOMIAL x - 60z^3 + 158/7z^2 + 8/7z - 1>
     #<POLYNOMIAL y + 30z^3 - 79/7z^2 + 3/7z>
     #<POLYNOMIAL z^4 - 10/21z^3 + 1/84z^2 + 1/84z>)
 --------------------------------------------------------------------------------
 
-Mailing lists
--------------
+Bug reports
+-----------
 
-* http://www.common-lisp.net/mailman/listinfo/cl-buchberger-devel[cl-buchberger-devel]
-* http://www.common-lisp.net/mailman/listinfo/cl-buchberger-announce[cl-buchberger-announce]
-
-References
-----------
-
-+ [[COX]] Cox, D.; Little, J.; and O'Shea, D. Ideals, Varieties, and Algorithms: An Introduction to Algebraic Geometry and Commutative Algebra, 3rd ed. New York: Springer-Verlag, 2007
+There's a bug tracker available at http://github.com/jmbr/cl-buchberger/issues
