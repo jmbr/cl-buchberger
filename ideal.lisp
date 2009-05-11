@@ -44,8 +44,8 @@
             (slot-value ideal 'ring)
             (slot-value ideal 'generators))))
 
-(defgeneric basis (ideal))
+(defgeneric basis (ideal)
+  (:documentation "Returns an array of generators for `ideal'."))
 
 (defmethod basis ((ideal ideal))
-  "Returns an array of generators for `ideal'."
   (reduced-groebner (generators ideal)))
