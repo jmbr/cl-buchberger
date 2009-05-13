@@ -64,7 +64,7 @@
             (make-instance 'term
                            :ring (base-ring p2)
                            :coefficient -1
-                           :monomial (make-array (length (variables (base-ring *g*))) :initial-element 0)))))
+                           :monomial (make-array (length (variables (base-ring p2))) :initial-element 0)))))
 
 (defmethod mul ((poly polynomial) (num number))
   (let ((new-poly (make-instance 'polynomial :ring (base-ring poly))))
@@ -97,22 +97,22 @@
     (doterms (tm p2 new-poly)
       (setf new-poly (add new-poly (mul p1 tm))))))
 
-(defmethod dividesp ((t1 term) (t2 term))
+(defmethod divides-p ((t1 term) (t2 term))
   (assert (and t1 t2))
   (with-slots ((c1 coefficient) (m1 monomial)) t1
     (with-slots ((c2 coefficient) (m2 monomial)) t2
-      ;; We don't have to check (dividesp c1 c2) because we're working
+      ;; We don't have to check (divides-p c1 c2) because we're working
       ;; with polynomials over a *field*
       (and (not (zerop c1))
            (every #'>= m2 m1)))))
 
-(defmethod dividesp ((t1 term) (p polynomial))
+(defmethod divides-p ((t1 term) (p polynomial))
   (assert (and t1 p))
-  (every #'(lambda (x) (dividesp t1 x)) (terms->list p)))
+  (every #'(lambda (x) (divides-p t1 x)) (terms->list p)))
 
 (defmethod div ((t1 term) (t2 term))
   "Returns the quotient of two terms"
-  (assert (dividesp t2 t1))
+  (assert (divides-p t2 t1))
   (with-slots ((c1 coefficient) (m1 monomial)) t1
     (with-slots ((c2 coefficient) (m2 monomial)) t2
       (make-instance 'term
@@ -139,7 +139,7 @@ quotients (as an array) and a remainder."
               while (and (< i len-fs)
                          (not division-occurred-p)) do
               (let ((fi (elt fs i)))
-                (if (dividesp (lt fi) (lt p))
+                (if (divides-p (lt fi) (lt p))
                     (progn
                       (setf (elt as i)
                             (add (elt as i) (div (lt p) (lt fi))))

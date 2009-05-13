@@ -52,7 +52,7 @@
 (defgeneric mul (e1 e2)
   (:documentation "Multiplies ring elements"))
 
-(defgeneric dividesp (e1 e2)
+(defgeneric divides-p (e1 e2)
   (:documentation "Returns t if e1 divides e2 in the base ring"))
 
 (defgeneric div (e1 e2)

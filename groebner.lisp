@@ -42,7 +42,7 @@
     (let ((fk (aref G k)))
       (if (and (/= k i)
                (/= k j)
-               (dividesp (lt fk)
+               (divides-p (lt fk)
                          (ring-lcm (lt fi) (lt fj))))
           (if (and (not (pair-member i k B))
                    (not (pair-member j k B)))
@@ -81,7 +81,7 @@ array of polynomials."
        with F = (map 'vector #'(lambda (x) (mul x (1/ (lc x)))) G)
        for i below (length F) for fi across F do
          (setf (elt F i)
-               (if (some #'(lambda (x) (dividesp (lt x) (lt fi)))
+               (if (some #'(lambda (x) (divides-p (lt x) (lt fi)))
                          (filter fi F))
                    (make-instance 'polynomial :ring (base-ring fi)) ; zero polynomial
                    (normal-form fi (remove fi F))))
