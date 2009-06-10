@@ -20,7 +20,7 @@
          :initform (error "You must specify a ring for the polynomial ideal.")
          :accessor ring)
    (generators :initarg :generators
-               :initform (error "You give a set of generators for the ideal.")
+               :initform (error "You must give a set of generators for the ideal.")
                :accessor generators)))
 
 (defun make-ideal (generators)
