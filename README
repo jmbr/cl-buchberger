@@ -1,7 +1,7 @@
 cl-buchberger
 =============
-Juan M. Bello <jmbr@superadditive.com>
-v0.0.4, May 2009
+Juan M. Bello Rivas <jmbr@superadditive.com>
+June 2009
 
 image::images/cl-buchberger.png[Screenshot]
 
@@ -18,12 +18,17 @@ Availability
 ------------
 
 Download the latest version of this package from
-http://common-lisp.net/project/cl-buchberger/cl-buchberger_latest.tar.gz[]
+http://github.com/jmbr/cl-buchberger/tarball/master
 
 Portability
 -----------
 
-The code has been tested under SBCL 1.0.28, CLISP 2.47, and ECL 9.4.0.
+The code has been tested under
+
+1. ABCL 0.16.0-dev
+2. CLISP 2.47
+3. ECL 9.6.1
+4. SBCL 1.0.29
 
 License
 -------
