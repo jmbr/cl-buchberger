@@ -25,4 +25,5 @@
            #:ring-zero-p #:ring-equal-p #:ring-identity-p #:ring-lcm
            #:degree #:lex> #:grlex> #:grevlex> #:*monomial-ordering* #:with-monomial-ordering
            #:lt #:lm #:lc #:multideg #:make-polynomial #:doterms #:mapterm
-           #:s-poly #:groebner #:reduce-gb #:reduced-groebner))
+           #:s-poly #:groebner #:reduce-gb #:reduced-groebner
+           #:make-ideal #:basis #:member-p))
