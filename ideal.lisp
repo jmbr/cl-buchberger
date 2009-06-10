@@ -49,3 +49,9 @@
 
 (defmethod basis ((ideal ideal))
   (reduced-groebner (generators ideal)))
+
+(defgeneric member-p (element ideal))
+
+(defmethod member-p ((element ring-element) (ideal ideal))
+  (when ideal
+    (ring-zero-p (ring-mod element (generators ideal)))))
