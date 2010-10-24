@@ -78,7 +78,7 @@ array of polynomials."
   (flet ((filter (f G)
            (remove-if #'(lambda (x) (or (ring-zero-p x) (equal f x))) G)))
     (loop
-       with F = (map 'vector #'(lambda (x) (mul x (1/ (lc x)))) G)
+       with F = (map 'vector #'(lambda (x) (mul x (/ (lc x)))) G)
        for i below (length F) for fi across F do
          (setf (elt F i)
                (if (some #'(lambda (x) (divides-p (lt x) (lt fi)))

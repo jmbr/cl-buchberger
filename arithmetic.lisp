@@ -171,6 +171,3 @@ quotients (as an array) and a remainder."
         (r2_d (* (numerator r2) (denominator r1))))
     (/ (lcm r1_d r2_d) d)))
 
-(defun 1/ (number)
-  "Return the inverse of number"
-  (/ 1 number))
