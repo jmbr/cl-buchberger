@@ -120,7 +120,7 @@
                      :monomial (vector- m1 m2)))))
 
 (defmethod divmod ((f polynomial) fs)
-  "Divides f by the polynomials in the sequence fs and returns the
+  "Divides F by the polynomials in the sequence FS and returns the
 quotients (as an array) and a remainder."
   (flet ((init-vector (poly n)
            (let ((vs (make-array n :fill-pointer 0)))
@@ -133,23 +133,20 @@ quotients (as an array) and a remainder."
        with as = (init-vector f len-fs)
        with r = (make-instance 'polynomial :ring (base-ring f))
        while (not (ring-zero-p p)) do
-         (let ((division-occurred-p nil))
+         (let (division-occurred-p)
            (loop
               with i = 0
               while (and (< i len-fs)
                          (not division-occurred-p)) do
               (let ((fi (elt fs i)))
                 (if (divides-p (lt fi) (lt p))
-                    (progn
-                      (setf (elt as i)
-                            (add (elt as i) (div (lt p) (lt fi))))
-                      (setf p (sub p (mul fi (div (lt p) (lt fi)))))
-                      (setf division-occurred-p t))
+                    (setf (elt as i) (add (elt as i) (div (lt p) (lt fi)))
+                          p (sub p (mul fi (div (lt p) (lt fi))))
+                          division-occurred-p t)
                     (incf i))))
-           (if (not division-occurred-p)
-               (progn
-                 (setf r (add r (lt p)))
-                 (setf p (sub p (lt p))))))
+           (unless division-occurred-p
+             (setf r (add r (lt p))
+                   p (sub p (lt p)))))
        finally (return (values as r)))))
 
 (defmethod ring-mod (f &rest fs)
