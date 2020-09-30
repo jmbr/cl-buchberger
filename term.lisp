@@ -23,7 +23,7 @@
    (monomial
     :type vector
     :initarg :monomial
-    :initform nil
+    :initform #()
     :accessor monomial)))
 
 (defmethod initialize-instance :after ((tm term) &key ring)
